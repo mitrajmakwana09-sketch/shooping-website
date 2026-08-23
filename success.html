@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Order Successful | MyShop</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 20px;
+
+            font-family: "Poppins", Arial, sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #dcfce7,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    #dbeafe,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #eefcf5,
+                    #f8ffff
+                );
+
+            color: #1f2937;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================================
+           SUCCESS CONTAINER
+        ===================================================== */
+
+        .success-container {
+
+            width: 100%;
+
+            max-width: 520px;
+
+            background: #ffffff;
+
+            border-radius: 28px;
+
+            padding: 40px 28px;
+
+            text-align: center;
+
+            box-shadow:
+                0 25px 70px
+                rgba(0, 0, 0, 0.12);
+
+            animation:
+                cardShow 0.7s ease;
+        }
+
+
+        @keyframes cardShow {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(40px)
+                    scale(0.95);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        /* =====================================================
+           SUCCESS ICON
+        ===================================================== */
+
+        .success-icon {
+
+            width: 110px;
+
+            height: 110px;
+
+            margin:
+                0 auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #dcfce7;
+
+            position: relative;
+
+            animation:
+                successPop 0.8s
+                cubic-bezier(
+                    .2,
+                    1.5,
+                    .4,
+                    1
+                );
+        }
+
+
+        @keyframes successPop {
+
+            0% {
+
+                transform: scale(0);
+
+                opacity: 0;
+            }
+
+            70% {
+
+                transform: scale(1.15);
+
+                opacity: 1;
+            }
+
+            100% {
+
+                transform: scale(1);
+            }
+        }
+
+
+        /* Outer circle */
+
+        .success-icon::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 84px;
+
+            height: 84px;
+
+            border-radius: 50%;
+
+            border:
+                3px solid #22c55e;
+
+            animation:
+                circlePulse 1.5s
+                ease-out infinite;
+        }
+
+
+        @keyframes circlePulse {
+
+            0% {
+
+                transform: scale(1);
+
+                opacity: 1;
+            }
+
+            100% {
+
+                transform: scale(1.35);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* Check */
+
+        .check {
+
+            font-size: 58px;
+
+            color: #16a34a;
+
+            font-weight: 700;
+
+            z-index: 2;
+
+            animation:
+                checkShow 0.5s
+                0.4s
+                both;
+        }
+
+
+        @keyframes checkShow {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(0.3);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+            }
+        }
+
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        h1 {
+
+            font-size: 30px;
+
+            color: #15803d;
+
+            margin-bottom: 10px;
+
+            font-weight: 700;
+
+            animation:
+                textShow 0.6s
+                0.3s
+                both;
+        }
+
+
+        @keyframes textShow {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        .message {
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            color: #6b7280;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =====================================================
+           ORDER BOX
+        ===================================================== */
+
+        .order-box {
+
+            background: #f8fafc;
+
+            border:
+                1px solid #e5e7eb;
+
+            border-radius: 16px;
+
+            padding: 18px;
+
+            margin-bottom: 25px;
+
+            text-align: left;
+
+            animation:
+                boxShow 0.6s
+                0.5s
+                both;
+        }
+
+
+        @keyframes boxShow {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* =====================================================
+           ORDER ROW
+        ===================================================== */
+
+        .order-row {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 9px 0;
+
+            font-size: 14px;
+        }
+
+
+        .order-row span:first-child {
+
+            color: #6b7280;
+        }
+
+
+        .order-row span:last-child {
+
+            font-weight: 600;
+
+            color: #111827;
+
+            text-align: right;
+
+            word-break: break-word;
+        }
+
+
+        /* Paid */
+
+        .paid {
+
+            color:
+                #16a34a !important;
+        }
+
+
+        /* COD */
+
+        .cod-confirmed {
+
+            color:
+                #2563eb !important;
+        }
+
+
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
+
+        .buttons {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .btn {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 12px;
+
+            padding: 14px 20px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        /* Home */
+
+        .home-btn {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #4f46e5,
+                    #6366f1
+                );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.20
+                );
+        }
+
+
+        .home-btn:hover {
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 12px 28px
+                rgba(
+                    79,
+                    70,
+                    229,
+                    0.30
+                );
+        }
+
+
+        /* Continue Shopping */
+
+        .orders-btn {
+
+            background:
+                #eef2ff;
+
+            color:
+                #4f46e5;
+        }
+
+
+        .orders-btn:hover {
+
+            background:
+                #e0e7ff;
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =====================================================
+           CONTACT SUPPORT
+        ===================================================== */
+
+        .continue-text {
+
+            margin-top: 22px;
+
+            font-size: 13px;
+
+            color: #9ca3af;
+        }
+
+
+        .continue-text a {
+
+            color:
+                #4f46e5;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                600;
+        }
+
+
+        /* =====================================================
+           CONFETTI
+        ===================================================== */
+
+        .confetti {
+
+            position: fixed;
+
+            width: 8px;
+
+            height: 14px;
+
+            top: -20px;
+
+            animation:
+                fall linear forwards;
+
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+
+        @keyframes fall {
+
+            to {
+
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+
+                padding: 15px;
+            }
+
+
+            .success-container {
+
+                padding:
+                    35px 20px;
+
+                border-radius:
+                    22px;
+            }
+
+
+            .success-icon {
+
+                width: 95px;
+
+                height: 95px;
+            }
+
+
+            .success-icon::before {
+
+                width: 72px;
+
+                height: 72px;
+            }
+
+
+            .check {
+
+                font-size: 48px;
+            }
+
+
+            h1 {
+
+                font-size: 25px;
+            }
+
+
+            .message {
+
+                font-size: 14px;
+            }
+
+
+            .order-row {
+
+                font-size: 13px;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL MOBILE
+        ===================================================== */
+
+        @media (max-width: 380px) {
+
+            .success-container {
+
+                padding:
+                    28px 17px;
+            }
+
+
+            h1 {
+
+                font-size: 22px;
+            }
+
+
+            .success-icon {
+
+                width: 85px;
+
+                height: 85px;
+            }
+
+
+            .success-icon::before {
+
+                width: 65px;
+
+                height: 65px;
+            }
+
+
+            .check {
+
+                font-size: 42px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         SUCCESS CARD
+    ===================================================== -->
+
+    <div class="success-container">
+
+
+        <!-- SUCCESS ICON -->
+
+        <div class="success-icon">
+
+            <div class="check">
+                ✓
+            </div>
+
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h1 id="successHeader">
+            Order Successful! 🎉
+        </h1>
+
+
+        <!-- MESSAGE -->
+
+        <p
+            id="successMessage"
+            class="message">
+
+            Thank you for your purchase!
+            Your order has been successfully placed.
+
+        </p>
+
+
+        <!-- =================================================
+             ORDER INFORMATION
+        ================================================== -->
+
+        <div class="order-box">
+
+
+            <!-- ORDER ID -->
+
+            <div class="order-row">
+
+                <span>
+                    Order ID
+                </span>
+
+                <span id="orderId">
+                    ---
+                </span>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="order-row">
+
+                <span>
+                    Payment
+                </span>
+
+                <span
+                    id="paymentStatus"
+                    class="paid">
+
+                    ✓ Paid
+
+                </span>
+
+            </div>
+
+
+            <!-- PAYMENT METHOD -->
+
+            <div class="order-row">
+
+                <span>
+                    Payment Method
+                </span>
+
+                <span id="paymentMethod">
+                    Online Payment
+                </span>
+
+            </div>
+
+
+            <!-- PAYMENT ID -->
+
+            <div
+                class="order-row"
+                id="paymentIdRow">
+
+                <span>
+                    Payment ID
+                </span>
+
+                <span id="paymentId">
+                    ---
+                </span>
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="order-row">
+
+                <span>
+                    Total Amount
+                </span>
+
+                <span id="totalAmount">
+                    ₹0
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             BUTTONS
+        ================================================== -->
+
+        <div class="buttons">
+
+
+            <a
+                href="index.html"
+                class="btn home-btn">
+
+                🏠 Back to Home
+
+            </a>
+
+
+            <a
+                href="products.html"
+                class="btn orders-btn">
+
+                🛍 Continue Shopping
+
+            </a>
+
+
+        </div>
+
+
+        <!-- SUPPORT -->
+
+        <p class="continue-text">
+
+            Need help?
+
+            <a href="#">
+                Contact Support
+            </a>
+
+        </p>
+
+
+    </div>
+
+
+    <script>
+
+        /* =====================================================
+           ORDER ID
+        ===================================================== */
+
+        const orderIdElement =
+            document.getElementById(
+                "orderId"
+            );
+
+
+        let savedOrderId =
+            localStorage.getItem(
+                "orderId"
+            );
+
+
+        if (!savedOrderId) {
+
+            savedOrderId =
+                "ORD-" +
+                Date.now()
+                    .toString()
+                    .slice(-8);
+
+            localStorage.setItem(
+                "orderId",
+                savedOrderId
+            );
+        }
+
+
+        orderIdElement.textContent =
+            "#" + savedOrderId;
+
+
+        /* =====================================================
+           PAYMENT ID
+        ===================================================== */
+
+        const paymentIdElement =
+            document.getElementById(
+                "paymentId"
+            );
+
+
+        const savedPaymentId =
+            localStorage.getItem(
+                "EnterPaymentId"
+            );
+
+
+        if (savedPaymentId) {
+
+            paymentIdElement.textContent =
+                savedPaymentId;
+
+        }
+
+        else {
+
+            paymentIdElement.textContent =
+                "Demo Payment";
+
+        }
+
+
+        /* =====================================================
+           PAYMENT AMOUNT
+        ===================================================== */
+
+        const totalAmountElement =
+            document.getElementById(
+                "totalAmount"
+            );
+
+
+        let savedAmount =
+            localStorage.getItem(
+                "paymentAmount"
+            );
+
+
+        /*
+           If paymentAmount is not available,
+           check cartTotal.
+        */
+
+        if (
+            savedAmount === null ||
+            savedAmount === ""
+        ) {
+
+            savedAmount =
+                localStorage.getItem(
+                    "cartTotal"
+                );
+
+        }
+
+
+        /*
+           If still unavailable,
+           check checkoutData.
+        */
+
+        if (
+            savedAmount === null ||
+            savedAmount === ""
+        ) {
+
+            try {
+
+                const checkoutData =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "checkoutData"
+                        ) || "null"
+                    );
+
+
+                if (
+                    checkoutData &&
+                    checkoutData.total
+                ) {
+
+                    savedAmount =
+                        checkoutData.total;
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.log(
+                    "Checkout data unavailable."
+                );
+
+            }
+
+        }
+
+
+        if (
+            savedAmount !== null &&
+            savedAmount !== ""
+        ) {
+
+            totalAmountElement.textContent =
+                "₹" +
+                Number(
+                    savedAmount
+                ).toLocaleString(
+                    "en-IN"
+                );
+
+        }
+
+        else {
+
+            totalAmountElement.textContent =
+                "₹0";
+
+        }
+
+
+        /* =====================================================
+           PAYMENT METHOD
+        ===================================================== */
+
+        const paymentMethodElement =
+            document.getElementById(
+                "paymentMethod"
+            );
+
+
+        const paymentStatusElement =
+            document.getElementById(
+                "paymentStatus"
+            );
+
+
+        const successHeader =
+            document.getElementById(
+                "successHeader"
+            );
+
+
+        const successMessage =
+            document.getElementById(
+                "successMessage"
+            );
+
+
+        const paymentMethod =
+            localStorage.getItem(
+                "paymentMethod"
+            ) || "Online Payment";
+
+
+        paymentMethodElement.textContent =
+            paymentMethod;
+
+
+        /* =====================================================
+           COD PAYMENT
+        ===================================================== */
+
+        if (
+            paymentMethod
+                .toLowerCase()
+                .includes("cash")
+        ) {
+
+            paymentStatusElement.textContent =
+                "✓ Confirmed";
+
+
+            paymentStatusElement.classList.remove(
+                "paid"
+            );
+
+
+            paymentStatusElement.classList.add(
+                "cod-confirmed"
+            );
+
+
+            successHeader.textContent =
+                "Order Confirmed! 🎉";
+
+
+            successMessage.textContent =
+                "Cash on Delivery selected. Your order has been successfully placed.";
+
+        }
+
+
+        /* =====================================================
+           ONLINE PAYMENT
+        ===================================================== */
+
+        else {
+
+            paymentStatusElement.textContent =
+                "✓ Paid";
+
+
+            paymentStatusElement.classList.add(
+                "paid"
+            );
+
+
+            successHeader.textContent =
+                "Order Successful! 🎉";
+
+
+            successMessage.textContent =
+                "Thank you for your purchase! Your order has been successfully placed.";
+
+        }
+
+
+        /* =====================================================
+           CONFETTI ANIMATION
+        ===================================================== */
+
+        function createConfetti() {
+
+            const confetti =
+                document.createElement(
+                    "div"
+                );
+
+
+            confetti.classList.add(
+                "confetti"
+            );
+
+
+            const size =
+                Math.random() * 6 + 6;
+
+
+            confetti.style.width =
+                size + "px";
+
+
+            confetti.style.height =
+                (size * 1.5) + "px";
+
+
+            confetti.style.left =
+                Math.random() * 100 + "vw";
+
+
+            const colors = [
+
+                "#22c55e",
+                "#3b82f6",
+                "#f59e0b",
+                "#ef4444",
+                "#8b5cf6",
+                "#ec4899"
+
+            ];
+
+
+            confetti.style.background =
+                colors[
+                    Math.floor(
+                        Math.random()
+                        * colors.length
+                    )
+                ];
+
+
+            confetti.style.animationDuration =
+                (Math.random() * 3 + 3)
+                + "s";
+
+
+            document.body.appendChild(
+                confetti
+            );
+
+
+            setTimeout(
+                function() {
+
+                    confetti.remove();
+
+                },
+                6000
+            );
+
+        }
+
+
+        /* CREATE 60 CONFETTI */
+
+        for (
+            let i = 0;
+            i < 60;
+            i++
+        ) {
+
+            setTimeout(
+                createConfetti,
+                i * 50
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>

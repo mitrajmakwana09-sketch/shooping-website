@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MyShop | Payment</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+
+    background:
+        radial-gradient(circle at 10% 10%,#dbeafe,transparent 32%),
+        radial-gradient(circle at 90% 90%,#e0e7ff,transparent 32%),
+        linear-gradient(135deg,#eef2ff,#f8fafc);
+
+    color:#111827;
+}
+
+.payment-container{
+    width:100%;
+    max-width:480px;
+}
+
+.payment-card{
+    background:#fff;
+    padding:32px;
+    border-radius:25px;
+
+    box-shadow:
+        0 25px 70px rgba(15,23,42,.15);
+
+    animation:cardIn .6s ease;
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.95);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* HEADER */
+
+.payment-header{
+    text-align:center;
+    margin-bottom:24px;
+}
+
+.payment-icon{
+    width:70px;
+    height:70px;
+    margin:auto;
+    margin-bottom:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(135deg,#4f46e5,#6366f1);
+
+    color:white;
+    font-size:30px;
+    font-weight:bold;
+
+    box-shadow:
+        0 12px 30px rgba(79,70,229,.3);
+
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+.payment-header h1{
+    font-size:27px;
+    margin-bottom:6px;
+}
+
+.payment-header p{
+    color:#6b7280;
+    font-size:13px;
+}
+
+/* WARNING */
+
+.paid-warning{
+    padding:15px;
+    margin-bottom:20px;
+
+    text-align:center;
+
+    border-radius:14px;
+
+    background:#ecfdf5;
+    border:1px solid #bbf7d0;
+}
+
+.paid-warning strong{
+    display:block;
+    color:#15803d;
+    font-size:14px;
+    margin-bottom:5px;
+}
+
+.paid-warning span{
+    color:#166534;
+    font-size:11px;
+}
+
+/* BALANCE */
+
+.balance-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:16px;
+    margin-bottom:22px;
+
+    border-radius:14px;
+
+    background:#eef2ff;
+    border:1px solid #c7d2fe;
+}
+
+.balance-left span{
+    display:block;
+    color:#64748b;
+    font-size:11px;
+    margin-bottom:5px;
+}
+
+.balance-left strong{
+    font-size:21px;
+    color:#1e40af;
+}
+
+.balance-icon{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+    background:#dbeafe;
+
+    font-size:20px;
+}
+
+/* FORM */
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+
+    color:#374151;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.form-group input{
+    width:100%;
+    height:50px;
+
+    padding:0 15px;
+
+    border:1px solid #d1d5db;
+    border-radius:11px;
+
+    outline:none;
+
+    font-size:14px;
+
+    transition:.25s;
+}
+
+.form-group input:focus{
+    border-color:#4f46e5;
+
+    box-shadow:
+        0 0 0 4px rgba(79,70,229,.1);
+
+    transform:translateY(-1px);
+}
+
+.form-group input.error{
+    border-color:#dc2626;
+    background:#fff7f7;
+
+    animation:shake .3s;
+}
+
+@keyframes shake{
+    25%{
+        transform:translateX(-5px);
+    }
+
+    50%{
+        transform:translateX(5px);
+    }
+
+    75%{
+        transform:translateX(-3px);
+    }
+}
+
+.form-group small{
+    display:block;
+    margin-top:6px;
+
+    color:#6b7280;
+    font-size:10px;
+}
+
+/* PASSWORD */
+
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    padding-right:75px;
+}
+
+.show-btn{
+    position:absolute;
+
+    right:6px;
+    top:6px;
+
+    height:38px;
+
+    padding:0 12px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#eef2ff;
+    color:#4f46e5;
+
+    font-weight:bold;
+    font-size:11px;
+
+    cursor:pointer;
+}
+
+/* AMOUNT */
+
+.amount-box{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:17px;
+    margin:22px 0;
+
+    border-radius:14px;
+
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+}
+
+.amount-box span{
+    color:#64748b;
+    font-size:13px;
+}
+
+.amount-box strong{
+    color:#4f46e5;
+    font-size:22px;
+}
+
+/* PAY BUTTON */
+
+.pay-button{
+    width:100%;
+    height:52px;
+
+    border:none;
+    border-radius:12px;
+
+    background:
+        linear-gradient(135deg,#4f46e5,#6366f1);
+
+    color:white;
+
+    font-size:15px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 20px rgba(79,70,229,.2);
+
+    transition:.3s;
+}
+
+.pay-button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 13px 28px rgba(79,70,229,.3);
+}
+
+.pay-button:disabled{
+    opacity:.7;
+    cursor:not-allowed;
+    transform:none;
+}
+
+/* LOADING */
+
+.loading{
+    display:none;
+
+    text-align:center;
+
+    margin-top:14px;
+
+    color:#4f46e5;
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* SECURITY */
+
+.security-note{
+    margin-top:18px;
+
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:10px;
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   PAYMENT ANIMATION POPUP
+===================================================== */
+
+.payment-overlay{
+    position:fixed;
+
+    inset:0;
+
+    z-index:9999;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    background:rgba(15,23,42,.65);
+
+    backdrop-filter:blur(8px);
+}
+
+.payment-overlay.show{
+    display:flex;
+
+    animation:overlayIn .3s ease;
+}
+
+@keyframes overlayIn{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+
+/* ANIMATION CARD */
+
+.animation-card{
+    width:min(380px,100%);
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    background:white;
+
+    border-radius:27px;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.3);
+
+    animation:popup .5s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes popup{
+
+    from{
+        opacity:0;
+        transform:scale(.7) translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+
+/* LOADER */
+
+.loader-circle{
+    width:90px;
+    height:90px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    border:7px solid #e0e7ff;
+
+    border-top-color:#4f46e5;
+    border-right-color:#6366f1;
+
+    animation:rotate 1s linear infinite;
+}
+
+@keyframes rotate{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* SUCCESS CIRCLE */
+
+.success-circle{
+    display:none;
+
+    width:90px;
+    height:90px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    justify-content:center;
+    align-items:center;
+
+    background:#22c55e;
+
+    color:white;
+
+    font-size:50px;
+    font-weight:bold;
+
+    box-shadow:
+        0 12px 35px rgba(34,197,94,.35);
+}
+
+.animation-card.success .loader-circle{
+    display:none;
+}
+
+.animation-card.success .success-circle{
+    display:flex;
+
+    animation:successPop .6s cubic-bezier(.2,1.5,.4,1);
+}
+
+@keyframes successPop{
+
+    0%{
+        opacity:0;
+        transform:scale(.2);
+    }
+
+    70%{
+        transform:scale(1.15);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+
+/* TEXT */
+
+.animation-card h2{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.animation-card p{
+    color:#64748b;
+    font-size:13px;
+    line-height:1.6;
+}
+
+
+/* PROGRESS */
+
+.progress{
+    width:100%;
+    height:7px;
+
+    margin-top:20px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#e5e7eb;
+}
+
+.progress-bar{
+    width:0;
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #4f46e5,
+            #6366f1,
+            #22c55e
+        );
+}
+
+.payment-overlay.show .progress-bar{
+    animation:progress 2s linear forwards;
+}
+
+@keyframes progress{
+    from{
+        width:0;
+    }
+
+    to{
+        width:100%;
+    }
+}
+
+
+/* SUCCESS DETAILS */
+
+.success-details{
+    display:none;
+
+    margin-top:16px;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:#ecfdf5;
+
+    color:#15803d;
+
+    font-size:12px;
+    font-weight:bold;
+}
+
+.animation-card.success .success-details{
+    display:block;
+
+    animation:detailsIn .5s ease;
+}
+
+@keyframes detailsIn{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    body{
+        padding:12px;
+    }
+
+    .payment-card{
+        padding:22px;
+        border-radius:20px;
+    }
+
+    .payment-header h1{
+        font-size:23px;
+    }
+
+    .payment-icon{
+        width:57px;
+        height:57px;
+        font-size:25px;
+    }
+
+    .amount-box strong{
+        font-size:19px;
+    }
+}
+
+@media(max-width:380px){
+
+    .payment-card{
+        padding:18px;
+    }
+
+    .payment-header h1{
+        font-size:21px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     PAYMENT CARD
+===================================================== -->
+
+<div class="payment-container">
+
+    <div class="payment-card">
+
+        <div class="payment-header">
+
+            <div class="payment-icon">
+                ₹
+            </div>
+
+            <h1>
+                Online Payment
+            </h1>
+
+            <p>
+                MyShop Payment
+            </p>
+
+        </div>
+
+
+        <div class="paid-warning">
+
+            <strong>
+                ✓ Paid Payment
+            </strong>
+
+            <span>
+                This is a demo payment system.
+                No real bank transaction is performed.
+            </span>
+
+        </div>
+
+
+        <div class="balance-box">
+
+            <div class="balance-left">
+
+                <span>
+                    Available Demo Balance
+                </span>
+
+                <strong>
+                    ₹10,000
+                </strong>
+
+            </div>
+
+            <div class="balance-icon">
+                💰
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Bank Name
+            </label>
+
+            <input
+                type="text"
+                id="bankName"
+                placeholder="Enter demo bank name"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Banking Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter demo username"
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Password
+            </label>
+
+            <div class="password-box">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter demo password"
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    id="showPassword"
+                    class="show-btn">
+
+                    Show
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Demo Security Code
+            </label>
+
+            <input
+                type="password"
+                id="pin"
+                placeholder="Enter 4 or 6 digit demo code"
+                maxlength="6"
+                inputmode="numeric"
+                autocomplete="off"
+            >
+
+            <small>
+                Demo code must contain 4 or 6 digits.
+            </small>
+
+        </div>
+
+
+        <div class="amount-box">
+
+            <span>
+                Payment Amount
+            </span>
+
+            <strong id="amount">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <button
+            type="button"
+            id="payButton"
+            class="pay-button">
+
+            💳 Pay Now
+
+        </button>
+
+
+        <div
+            id="loading"
+            class="loading">
+
+            Processing Payment...
+
+        </div>
+
+
+        <p class="security-note">
+
+            🔒 Demo only.
+            Password and security code are not stored.
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAYMENT ANIMATION
+===================================================== -->
+
+<div
+    id="paymentOverlay"
+    class="payment-overlay">
+
+    <div
+        id="animationCard"
+        class="animation-card">
+
+
+        <!-- LOADING CIRCLE -->
+
+        <div class="loader-circle"></div>
+
+
+        <!-- SUCCESS CIRCLE -->
+
+        <div class="success-circle">
+            ✓
+        </div>
+
+
+        <h2 id="animationTitle">
+            Processing Payment
+        </h2>
+
+
+        <p id="animationText">
+            Verifying your demo payment...
+        </p>
+
+
+        <!-- PROGRESS BAR -->
+
+        <div class="progress">
+
+            <div class="progress-bar"></div>
+
+        </div>
+
+
+        <!-- SUCCESS DETAILS -->
+
+        <div class="success-details">
+
+            ✓ Payment completed successfully
+
+            <br>
+
+            Your order is being created...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const bankName =
+    document.getElementById("bankName");
+
+const username =
+    document.getElementById("username");
+
+const password =
+    document.getElementById("password");
+
+const pin =
+    document.getElementById("pin");
+
+const payButton =
+    document.getElementById("payButton");
+
+const loading =
+    document.getElementById("loading");
+
+const showPassword =
+    document.getElementById("showPassword");
+
+const amount =
+    document.getElementById("amount");
+
+
+const paymentOverlay =
+    document.getElementById("paymentOverlay");
+
+const animationCard =
+    document.getElementById("animationCard");
+
+const animationTitle =
+    document.getElementById("animationTitle");
+
+const animationText =
+    document.getElementById("animationText");
+
+
+/* =====================================================
+   GET CART TOTAL
+===================================================== */
+
+let totalAmount = 0;
+
+try{
+
+    const checkoutData =
+        JSON.parse(
+            localStorage.getItem(
+                "checkoutData"
+            ) || "null"
+        );
+
+
+    const cart =
+        JSON.parse(
+            localStorage.getItem(
+                "cart"
+            ) || "[]"
+        );
+
+
+    if(
+        checkoutData &&
+        typeof checkoutData.total === "number"
+    ){
+
+        totalAmount =
+            checkoutData.total;
+
+    }
+
+    else{
+
+        totalAmount =
+            cart.reduce(
+                function(total,item){
+
+                    return total +
+
+                        Number(
+                            item.price || 0
+                        )
+
+                        *
+
+                        Number(
+                            item.quantity || 1
+                        );
+
+                },
+                0
+            );
+
+    }
+
+}
+
+catch(error){
+
+    console.log(
+        "Cart data not available."
+    );
+
+}
+
+
+/* SHOW AMOUNT */
+
+amount.textContent =
+    "₹" +
+    totalAmount.toLocaleString("en-IN");
+
+
+/* =====================================================
+   SHOW PASSWORD
+===================================================== */
+
+showPassword.addEventListener(
+    "click",
+    function(){
+
+        if(
+            password.type === "password"
+        ){
+
+            password.type = "text";
+
+            showPassword.textContent =
+                "Hide";
+
+        }
+
+        else{
+
+            password.type =
+                "password";
+
+            showPassword.textContent =
+                "Show";
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   PIN ONLY NUMBERS
+===================================================== */
+
+pin.addEventListener(
+    "input",
+    function(){
+
+        this.value =
+            this.value.replace(
+                /\D/g,
+                ""
+            );
+
+    }
+);
+
+
+/* =====================================================
+   PAY BUTTON
+===================================================== */
+
+payButton.addEventListener(
+    "click",
+    function(){
+
+        /* REMOVE OLD ERRORS */
+
+        bankName.classList.remove(
+            "error"
+        );
+
+        username.classList.remove(
+            "error"
+        );
+
+        password.classList.remove(
+            "error"
+        );
+
+        pin.classList.remove(
+            "error"
+        );
+
+
+        /* VALIDATION */
+
+        let valid = true;
+
+
+        if(
+            bankName.value.trim() === ""
+        ){
+
+            bankName.classList.add(
+                "error"
+            );
+
+            valid = false;
+
+        }
+
+
+        if(
+            username.value.trim() === ""
+        ){
+
+            username.classList.add(
+                "error"
+            );
+
+            valid = false;
+
+        }
+
+
+        if(
+            password.value.trim() === ""
+        ){
+
+            password.classList.add(
+                "error"
+            );
+
+            valid = false;
+
+        }
+
+
+        if(
+            !/^\d{4}$|^\d{6}$/.test(
+                pin.value
+            )
+        ){
+
+            pin.classList.add(
+                "error"
+            );
+
+            valid = false;
+
+        }
+
+
+        /* VALIDATION ERROR */
+
+        if(!valid){
+
+            alert(
+                "Please complete all demo payment fields."
+            );
+
+            return;
+
+        }
+
+
+        /* =================================================
+           START PAYMENT ANIMATION
+        ================================================= */
+
+        payButton.disabled = true;
+
+        payButton.textContent =
+            "Processing...";
+
+        loading.style.display =
+            "block";
+
+
+        animationCard.classList.remove(
+            "success"
+        );
+
+
+        animationTitle.textContent =
+            "Processing Payment";
+
+
+        animationText.textContent =
+            "Verifying your demo payment...";
+
+
+        paymentOverlay.classList.add(
+            "show"
+        );
+
+
+        /* =================================================
+           DEMO PAYMENT ID
+        ================================================= */
+
+        const paymentId =
+            "DEMO-" +
+            Date.now();
+
+
+        /* =================================================
+           SAVE DEMO STATUS
+        ================================================= */
+
+        localStorage.setItem(
+            "paymentStatus",
+            "success"
+        );
+
+        localStorage.setItem(
+            "EnterPaymentId",
+            paymentId
+        );
+
+        localStorage.setItem(
+            "paymentBank",
+            bankName.value.trim()
+        );
+
+        localStorage.setItem(
+            "paymentAmount",
+            totalAmount
+        );
+
+
+        /* =================================================
+           ANIMATION STEP 2
+        ================================================= */
+
+        setTimeout(
+            function(){
+
+                animationText.textContent =
+                    "Confirming payment...";
+
+            },
+            700
+        );
+
+
+        /* =================================================
+           SUCCESS ANIMATION
+        ================================================= */
+
+        setTimeout(
+            function(){
+
+                animationCard.classList.add(
+                    "success"
+                );
+
+
+                animationTitle.textContent =
+                    "Payment Successful!";
+
+
+                animationText.textContent =
+                    "Your demo payment has been completed successfully.";
+
+
+                payButton.textContent =
+                    "✓ Payment Successful";
+
+
+            },
+            2000
+        );
+
+
+        /* =================================================
+           REDIRECT
+        ================================================= */
+
+        setTimeout(
+            function(){
+
+                window.location.href =
+                    "success.html";
+
+            },
+            3500
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>

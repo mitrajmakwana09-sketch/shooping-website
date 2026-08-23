@@ -1,0 +1,2230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Products | MyShop</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: "Poppins", sans-serif;
+
+            background: #f7f8fc;
+
+            color: #111827;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+
+            width: 100%;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #eeeeee;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        .navbar {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            min-height: 70px;
+
+            padding: 0 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+            color: #4f46e5;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 25px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #374151;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links .active {
+
+            color: #4f46e5;
+        }
+
+
+        .cart-button {
+
+            position: relative;
+
+            text-decoration: none;
+
+            color: #111827;
+
+            font-size: 20px;
+        }
+
+
+        .cart-count {
+
+            position: absolute;
+
+            top: -10px;
+
+            right: -12px;
+
+            min-width: 20px;
+
+            height: 20px;
+
+            padding: 0 5px;
+
+            border-radius: 20px;
+
+            background: #ef4444;
+
+            color: white;
+
+            font-size: 11px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* =========================
+           PAGE HEADER
+        ========================= */
+
+        .page-header {
+
+            text-align: center;
+
+            padding: 50px 20px 30px;
+        }
+
+
+        .page-header h1 {
+
+            font-size: 36px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .page-header p {
+
+            color: #6b7280;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        .search-area {
+
+            max-width: 900px;
+
+            margin: 0 auto 25px;
+
+            padding: 0 20px;
+        }
+
+
+        .search-box {
+
+            position: relative;
+
+            width: 100%;
+        }
+
+
+        .search-box i {
+
+            position: absolute;
+
+            left: 18px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #9ca3af;
+        }
+
+
+        .search-box input {
+
+            width: 100%;
+
+            height: 52px;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 14px;
+
+            background: white;
+
+            outline: none;
+
+            padding: 0 20px 0 48px;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+
+        .search-box input:focus {
+
+            border-color: #6366f1;
+
+            box-shadow:
+                0 0 0 4px rgba(99, 102, 241, 0.10);
+        }
+
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 0 20px 35px;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .category-btn {
+
+            border: 1px solid #e5e7eb;
+
+            background: white;
+
+            color: #374151;
+
+            padding: 9px 18px;
+
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+
+        .category-btn:hover,
+        .category-btn.active {
+
+            background: #4f46e5;
+
+            border-color: #4f46e5;
+
+            color: white;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-section {
+
+            max-width: 1200px;
+
+            margin: auto;
+
+            padding: 0 20px 60px;
+        }
+
+
+        .products-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 20px;
+        }
+
+
+        .products-top h2 {
+
+            font-size: 22px;
+        }
+
+
+        .products-top span {
+
+            color: #6b7280;
+
+            font-size: 13px;
+        }
+
+
+        .products-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+
+        /* =========================
+           PRODUCT CARD
+        ========================= */
+
+        .product-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            border: 1px solid #eeeeee;
+
+            transition: 0.3s;
+
+            animation: productShow 0.5s ease;
+        }
+
+
+        @keyframes productShow {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(20px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+        .product-card:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.10);
+        }
+
+
+        .product-image {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 230px;
+
+            overflow: hidden;
+
+            background: #f3f4f6;
+        }
+
+
+        .product-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+
+        .product-card:hover
+        .product-image img {
+
+            transform: scale(1.07);
+        }
+
+
+        .discount {
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 12px;
+
+            background: #ef4444;
+
+            color: white;
+
+            padding: 5px 9px;
+
+            border-radius: 7px;
+
+            font-size: 11px;
+
+            font-weight: 600;
+        }
+
+
+        .wishlist {
+
+            position: absolute;
+
+            top: 12px;
+
+            right: 12px;
+
+            width: 35px;
+
+            height: 35px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            background: white;
+
+            color: #6b7280;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.10);
+
+            transition: 0.3s;
+        }
+
+
+        .wishlist:hover {
+
+            color: #ef4444;
+
+            transform: scale(1.1);
+        }
+
+
+        /* Product Info */
+
+        .product-info {
+
+            padding: 17px;
+        }
+
+
+        .category {
+
+            color: #6366f1;
+
+            font-size: 11px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .product-name {
+
+            font-size: 16px;
+
+            font-weight: 600;
+
+            margin: 5px 0 8px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .rating {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            margin-bottom: 10px;
+
+            font-size: 12px;
+        }
+
+
+        .stars {
+
+            color: #f59e0b;
+        }
+
+
+        .rating-number {
+
+            color: #6b7280;
+        }
+
+
+        .price-row {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-bottom: 14px;
+        }
+
+
+        .price {
+
+            font-size: 19px;
+
+            font-weight: 700;
+
+            color: #111827;
+        }
+
+
+        .old-price {
+
+            font-size: 12px;
+
+            color: #9ca3af;
+
+            text-decoration: line-through;
+        }
+
+
+        /* Buttons */
+
+        .product-buttons {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 8px;
+        }
+
+
+        .btn {
+
+            border: none;
+
+            border-radius: 9px;
+
+            padding: 11px 8px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+
+        .add-cart {
+
+            background: #eef2ff;
+
+            color: #4f46e5;
+        }
+
+
+        .add-cart:hover {
+
+            background: #e0e7ff;
+        }
+
+
+        .buy-now {
+
+            background: #4f46e5;
+
+            color: white;
+        }
+
+
+        .buy-now:hover {
+
+            background: #4338ca;
+        }
+
+
+        /* =========================
+           NO PRODUCTS
+        ========================= */
+
+        .no-products {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            color: #6b7280;
+        }
+
+
+        .no-products i {
+
+            font-size: 45px;
+
+            margin-bottom: 15px;
+
+            color: #9ca3af;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            background: #111827;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px 20px;
+        }
+
+
+        footer p {
+
+            font-size: 13px;
+
+            color: #9ca3af;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .products-grid {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                min-height: 62px;
+            }
+
+
+            .nav-links {
+
+                display: none;
+            }
+
+
+            .page-header {
+
+                padding-top: 35px;
+            }
+
+
+            .page-header h1 {
+
+                font-size: 29px;
+            }
+
+
+            .products-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 13px;
+            }
+
+
+            .product-image {
+
+                height: 180px;
+            }
+
+
+            .product-info {
+
+                padding: 12px;
+            }
+
+
+            .product-name {
+
+                font-size: 14px;
+            }
+
+
+            .price {
+
+                font-size: 16px;
+            }
+
+
+            .product-buttons {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .products-top h2 {
+
+                font-size: 19px;
+            }
+
+        }
+
+
+        /* =========================
+           SMALL PHONE
+        ========================= */
+
+        @media (max-width: 400px) {
+
+            .products-grid {
+
+                grid-template-columns: 1fr 1fr;
+
+                gap: 9px;
+            }
+
+
+            .product-image {
+
+                height: 145px;
+            }
+
+
+            .product-info {
+
+                padding: 10px;
+            }
+
+
+            .category {
+
+                font-size: 9px;
+            }
+
+
+            .product-name {
+
+                font-size: 12px;
+            }
+
+
+            .price {
+
+                font-size: 15px;
+            }
+
+
+            .old-price {
+
+                font-size: 10px;
+            }
+
+
+            .btn {
+
+                font-size: 10px;
+
+                padding: 9px 5px;
+            }
+
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header>
+
+        <nav class="navbar">
+
+
+            <a href="index.html"
+               class="logo">
+
+                MyShop
+
+            </a>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="products.html"
+                       class="active">
+                        Products
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cart.html">
+                        Cart
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <a href="cart.html"
+               class="cart-button">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span class="cart-count"
+                      id="cartCount">
+
+                    0
+
+                </span>
+
+            </a>
+
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         PAGE HEADER
+    ========================== -->
+
+    <section class="page-header">
+
+        <h1>
+            Our Products 🛍️
+        </h1>
+
+        <p>
+            Find the perfect products for you
+        </p>
+
+    </section>
+
+
+
+    <!-- =========================
+         SEARCH
+    ========================== -->
+
+    <div class="search-area">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search products..."
+                autocomplete="off">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         CATEGORIES
+    ========================== -->
+
+    <div class="categories">
+
+        <button
+            class="category-btn active"
+            data-category="all">
+
+            All
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            data-category="electronics">
+
+            Electronics
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            data-category="fashion">
+
+            Fashion
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            data-category="shoes">
+
+            Shoes
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            data-category="beauty">
+
+            Beauty
+
+        </button>
+
+
+        <button
+            class="category-btn"
+            data-category="accessories">
+
+            Accessories
+
+        </button>
+
+    </div>
+
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+
+    <section class="products-section">
+
+
+        <div class="products-top">
+
+            <h2>
+                All Products
+            </h2>
+
+            <span id="productCount">
+                8 Products
+            </span>
+
+        </div>
+
+
+
+        <div class="products-grid"
+             id="productsGrid">
+
+
+            <!-- Product 1 -->
+
+            <div class="product-card"
+                 data-category="electronics"
+                 data-name="Wireless Headphones">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product1.jpg"
+                        alt="Wireless Headphones">
+
+                    <span class="discount">
+                        -20%
+                    </span>
+
+                    <button
+                        class="wishlist"
+                        onclick="addWishlist(this)">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="category">
+                        Electronics
+                    </span>
+
+                    <h3 class="product-name">
+                        Wireless Headphones
+                    </h3>
+
+
+                    <div class="rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.8
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹1,999
+                        </span>
+
+                        <span class="old-price">
+                            ₹2,499
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="btn add-cart"
+                            onclick="addToCart('Wireless Headphones',1999,'images/product1.jpg')">
+
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Cart
+
+                        </button>
+
+
+                        <button
+                            class="btn buy-now"
+                            onclick="buyNow('Wireless Headphones',1999,'images/product1.jpg')">
+
+                            Buy Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Product 2 -->
+
+            <div class="product-card"
+                 data-category="fashion"
+                 data-name="Premium T-Shirt">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product2.jpg"
+                        alt="Premium T-Shirt">
+
+                    <span class="discount">
+                        -15%
+                    </span>
+
+                    <button
+                        class="wishlist"
+                        onclick="addWishlist(this)">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="category">
+                        Fashion
+                    </span>
+
+                    <h3 class="product-name">
+                        Premium T-Shirt
+                    </h3>
+
+
+                    <div class="rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.6
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹799
+                        </span>
+
+                        <span class="old-price">
+                            ₹949
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="btn add-cart"
+                            onclick="addToCart('Premium T-Shirt',799,'images/product2.jpg')">
+
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Cart
+
+                        </button>
+
+
+                        <button
+                            class="btn buy-now"
+                            onclick="buyNow('Premium T-Shirt',799,'images/product2.jpg')">
+
+                            Buy Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Product 3 -->
+
+            <div class="product-card"
+                 data-category="shoes"
+                 data-name="Running Shoes">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product3.jpg"
+                        alt="Running Shoes">
+
+                    <span class="discount">
+                        -25%
+                    </span>
+
+                    <button
+                        class="wishlist"
+                        onclick="addWishlist(this)">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="category">
+                        Shoes
+                    </span>
+
+                    <h3 class="product-name">
+                        Running Shoes
+                    </h3>
+
+
+                    <div class="rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.7
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹1,499
+                        </span>
+
+                        <span class="old-price">
+                            ₹1,999
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="btn add-cart"
+                            onclick="addToCart('Running Shoes',1499,'images/product3.jpg')">
+
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Cart
+
+                        </button>
+
+
+                        <button
+                            class="btn buy-now"
+                            onclick="buyNow('Running Shoes',1499,'images/product3.jpg')">
+
+                            Buy Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Product 4 -->
+
+            <div class="product-card"
+                 data-category="beauty"
+                 data-name="Beauty Care Kit">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product4.jpg"
+                        alt="Beauty Care Kit">
+
+                    <span class="discount">
+                        -30%
+                    </span>
+
+                    <button
+                        class="wishlist"
+                        onclick="addWishlist(this)">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="category">
+                        Beauty
+                    </span>
+
+                    <h3 class="product-name">
+                        Beauty Care Kit
+                    </h3>
+
+
+                    <div class="rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.5
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹999
+                        </span>
+
+                        <span class="old-price">
+                            ₹1,399
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="btn add-cart"
+                            onclick="addToCart('Beauty Care Kit',999,'images/product4.jpg')">
+
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Cart
+
+                        </button>
+
+
+                        <button
+                            class="btn buy-now"
+                            onclick="buyNow('Beauty Care Kit',999,'images/product4.jpg')">
+
+                            Buy Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Product 5 -->
+
+            <div class="product-card"
+                 data-category="accessories"
+                 data-name="Smart Watch">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product5.jpg"
+                        alt="Smart Watch">
+
+                    <span class="discount">
+                        -18%
+                    </span>
+
+                    <button
+                        class="wishlist"
+                        onclick="addWishlist(this)">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="category">
+                        Accessories
+                    </span>
+
+                    <h3 class="product-name">
+                        Smart Watch
+                    </h3>
+
+
+                    <div class="rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.8
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹2,499
+                        </span>
+
+                        <span class="old-price">
+                            ₹2,999
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="btn add-cart"
+                            onclick="addToCart('Smart Watch',2499,'images/product5.jpg')">
+
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Cart
+
+                        </button>
+
+
+                        <button
+                            class="btn buy-now"
+                            onclick="buyNow('Smart Watch',2499,'images/product5.jpg')">
+
+                            Buy Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Product 6 -->
+
+            <div class="product-card"
+                 data-category="electronics"
+                 data-name="Bluetooth Speaker">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product6.jpg"
+                        alt="Bluetooth Speaker">
+
+                    <span class="discount">
+                        -22%
+                    </span>
+
+                    <button
+                        class="wishlist"
+                        onclick="addWishlist(this)">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="category">
+                        Electronics
+                    </span>
+
+                    <h3 class="product-name">
+                        Bluetooth Speaker
+                    </h3>
+
+
+                    <div class="rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.4
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹1,299
+                        </span>
+
+                        <span class="old-price">
+                            ₹1,699
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="btn add-cart"
+                            onclick="addToCart('Bluetooth Speaker',1299,'images/product6.jpg')">
+
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Cart
+
+                        </button>
+
+
+                        <button
+                            class="btn buy-now"
+                            onclick="buyNow('Bluetooth Speaker',1299,'images/product6.jpg')">
+
+                            Buy Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Product 7 -->
+
+            <div class="product-card"
+                 data-category="fashion"
+                 data-name="Casual Hoodie">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product7.jpg"
+                        alt="Casual Hoodie">
+
+                    <span class="discount">
+                        -20%
+                    </span>
+
+                    <button
+                        class="wishlist"
+                        onclick="addWishlist(this)">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="category">
+                        Fashion
+                    </span>
+
+                    <h3 class="product-name">
+                        Casual Hoodie
+                    </h3>
+
+
+                    <div class="rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.6
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹1,199
+                        </span>
+
+                        <span class="old-price">
+                            ₹1,499
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="btn add-cart"
+                            onclick="addToCart('Casual Hoodie',1199,'images/product7.jpg')">
+
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Cart
+
+                        </button>
+
+
+                        <button
+                            class="btn buy-now"
+                            onclick="buyNow('Casual Hoodie',1199,'images/product7.jpg')">
+
+                            Buy Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Product 8 -->
+
+            <div class="product-card"
+                 data-category="accessories"
+                 data-name="Premium Backpack">
+
+
+                <div class="product-image">
+
+                    <img
+                        src="images/product8.jpg"
+                        alt="Premium Backpack">
+
+                    <span class="discount">
+                        -17%
+                    </span>
+
+                    <button
+                        class="wishlist"
+                        onclick="addWishlist(this)">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <span class="category">
+                        Accessories
+                    </span>
+
+                    <h3 class="product-name">
+                        Premium Backpack
+                    </h3>
+
+
+                    <div class="rating">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <span class="rating-number">
+                            4.7
+                        </span>
+
+                    </div>
+
+
+                    <div class="price-row">
+
+                        <span class="price">
+                            ₹899
+                        </span>
+
+                        <span class="old-price">
+                            ₹1,099
+                        </span>
+
+                    </div>
+
+
+                    <div class="product-buttons">
+
+                        <button
+                            class="btn add-cart"
+                            onclick="addToCart('Premium Backpack',899,'images/product8.jpg')">
+
+                            <i class="fa-solid fa-cart-plus"></i>
+                            Cart
+
+                        </button>
+
+
+                        <button
+                            class="btn buy-now"
+                            onclick="buyNow('Premium Backpack',899,'images/product8.jpg')">
+
+                            Buy Now
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- No Products -->
+
+        <div class="no-products"
+             id="noProducts">
+
+            <i class="fa-solid fa-box-open"></i>
+
+            <h3>
+                No products found
+            </h3>
+
+            <p>
+                Try another search or category.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 MyShop. All Rights Reserved.
+        </p>
+
+    </footer>
+
+    <p style="text-align:center; margin:20px;"><a href="admin.html">Add Product</a></p>
+
+
+
+        <!-- =========================
+            JAVASCRIPT
+        ========================== -->
+
+        <script src="js/script.js"></script>
+        <script src="js/products.js"></script>
+
+        <script>
+
+
+        /* =========================
+           CART
+        ========================== */
+
+        cart =
+            window.cart ||
+            JSON.parse(
+                localStorage.getItem("cart")
+            ) || [];
+
+
+        updateCartCount();
+
+
+        function updateCartCount() {
+
+            const count =
+                cart.reduce(
+                    (total, item) =>
+                        total + item.quantity,
+                    0
+                );
+
+
+            document.getElementById(
+                "cartCount"
+            ).textContent = count;
+
+        }
+
+
+
+        /* =========================
+           ADD TO CART
+        ========================== */
+
+        function addToCart(
+            name,
+            price,
+            image
+        ) {
+
+            const options = window.getProductOptions ? window.getProductOptions(name) : { color: "Default", size: "Standard" };
+
+
+            const existing =
+                cart.find(
+                    item =>
+                        item.name === name && item.color === options.color && item.size === options.size
+                );
+
+
+            if (existing) {
+
+                existing.quantity++;
+
+            } else {
+
+                cart.push({
+
+                    name: name,
+
+                    price: Number(String(price).replace(/[^0-9.]/g, "")) || 0,
+
+                    image: image,
+
+                    color: options.color,
+
+                    size: options.size,
+
+                    quantity: 1
+
+                });
+
+            }
+
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+
+            updateCartCount();
+
+
+            alert(
+                name +
+                " added to cart! 🛒"
+            );
+
+        }
+
+
+
+        /* =========================
+           BUY NOW
+        ========================== */
+
+        window.buyNow = function(
+            name,
+            price,
+            image
+        ) {
+
+            const options = window.getProductOptions ? window.getProductOptions(name) : { color: "Default", size: "Standard" };
+
+
+            cart = [{
+
+                name: name,
+
+                price: price,
+
+                image: image,
+
+                color: options.color,
+
+                size: options.size,
+
+                quantity: 1
+
+            }];
+
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+
+            window.location.href =
+                "checkout.html?item=" +
+                encodeURIComponent(
+                    JSON.stringify(cart[0])
+                );
+
+        }
+
+
+
+        /* =========================
+           WISHLIST
+        ========================== */
+
+        function addWishlist(button) {
+
+            const icon =
+                button.querySelector("i");
+
+
+            if (
+                icon.classList.contains(
+                    "fa-regular"
+                )
+            ) {
+
+                icon.classList.remove(
+                    "fa-regular"
+                );
+
+                icon.classList.add(
+                    "fa-solid"
+                );
+
+                button.style.color =
+                    "#ef4444";
+
+            } else {
+
+                icon.classList.remove(
+                    "fa-solid"
+                );
+
+                icon.classList.add(
+                    "fa-regular"
+                );
+
+                button.style.color =
+                    "#6b7280";
+
+            }
+
+        }
+
+
+
+        /* =========================
+           SEARCH
+        ========================== */
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        const productCards =
+            document.querySelectorAll(
+                ".product-card"
+            );
+
+
+        const productCount =
+            document.getElementById(
+                "productCount"
+            );
+
+
+        const noProducts =
+            document.getElementById(
+                "noProducts"
+            );
+
+
+        let activeCategory = "all";
+
+
+        searchInput.addEventListener(
+            "input",
+            filterProducts
+        );
+
+
+
+        /* =========================
+           CATEGORY FILTER
+        ========================== */
+
+        document
+            .querySelectorAll(".category-btn")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        document
+                            .querySelectorAll(
+                                ".category-btn"
+                            )
+                            .forEach(btn =>
+                                btn.classList.remove(
+                                    "active"
+                                )
+                            );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        activeCategory =
+                            this.dataset.category;
+
+
+                        filterProducts();
+
+                    }
+                );
+
+            });
+
+
+
+        /* =========================
+           FILTER FUNCTION
+        ========================== */
+
+        function filterProducts() {
+
+
+            const search =
+                searchInput.value
+                    .toLowerCase()
+                    .trim();
+
+
+            let visibleCount = 0;
+
+
+            productCards.forEach(card => {
+
+
+                const name =
+                    card.dataset.name
+                        .toLowerCase();
+
+
+                const category =
+                    card.dataset.category;
+
+
+                const matchesSearch =
+                    name.includes(search);
+
+
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    category === activeCategory;
+
+
+                if (
+                    matchesSearch &&
+                    matchesCategory
+                ) {
+
+                    card.style.display =
+                        "block";
+
+                    visibleCount++;
+
+                } else {
+
+                    card.style.display =
+                        "none";
+
+                }
+
+            });
+
+
+            productCount.textContent =
+                visibleCount +
+                (
+                    visibleCount === 1
+                        ? " Product"
+                        : " Products"
+                );
+
+
+            noProducts.style.display =
+                visibleCount === 0
+                    ? "block"
+                    : "none";
+
+        }
+
+
+    </script>
+
+    <script src="js/product-options.js"></script>
+    <script src="js/saved-products.js"></script>
+
+
+</body>
+
+</html>

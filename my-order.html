@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Orders</title>
+
+    <link rel="stylesheet" href="css/my-order.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span>🛍️</span> MyShop
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="my-order.html" class="active">My Orders</a>
+            <a href="profile.html">Profile</a>
+        </nav>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </header>
+
+
+    <!-- Main Container -->
+    <main class="orders-container">
+
+        <div class="page-header">
+            <div>
+                <h1>My Orders</h1>
+                <p>Track and manage all your orders</p>
+            </div>
+
+            <a href="products.html" class="shop-btn">
+                Continue Shopping
+            </a>
+        </div>
+
+
+        <!-- Order Filter -->
+        <section class="filter-section">
+
+            <button class="filter-btn active" onclick="filterOrders('all', this)">
+                All
+            </button>
+
+            <button class="filter-btn" onclick="filterOrders('processing', this)">
+                Processing
+            </button>
+
+            <button class="filter-btn" onclick="filterOrders('shipped', this)">
+                Shipped
+            </button>
+
+            <button class="filter-btn" onclick="filterOrders('delivered', this)">
+                Delivered
+            </button>
+
+            <button class="filter-btn" onclick="filterOrders('cancelled', this)">
+                Cancelled
+            </button>
+
+        </section>
+
+
+        <!-- Orders -->
+        <section id="ordersList">
+
+            <!-- Order 1 -->
+            <div class="order-card" data-status="delivered">
+
+                <div class="order-header">
+
+                    <div>
+                        <span class="order-label">Order ID</span>
+                        <strong>#ORD-1001</strong>
+                    </div>
+
+                    <div>
+                        <span class="order-label">Order Date</span>
+                        <strong>10 Aug 2026</strong>
+                    </div>
+
+                    <span class="status delivered">
+                        Delivered
+                    </span>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <img src="images/product1.jpg"
+                         alt="Wireless Headphones"
+                         onerror="this.src='https://via.placeholder.com/100'">
+
+                    <div class="product-details">
+                        <h3>Wireless Headphones</h3>
+                        <p>Black • Premium Edition</p>
+                        <p>Quantity: 1</p>
+                    </div>
+
+                    <div class="price">
+                        ₹1,999
+                    </div>
+
+                </div>
+
+
+                <div class="order-footer">
+
+                    <div>
+                        <span>Total Amount</span>
+                        <strong>₹1,999</strong>
+                    </div>
+
+                    <div class="actions">
+                        <button onclick="viewOrder('ORD-1001')">
+                            View Details
+                        </button>
+
+                        <button class="secondary"
+                                onclick="buyAgain('Wireless Headphones')">
+                            Buy Again
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Order 2 -->
+            <div class="order-card" data-status="shipped">
+
+                <div class="order-header">
+
+                    <div>
+                        <span class="order-label">Order ID</span>
+                        <strong>#ORD-1002</strong>
+                    </div>
+
+                    <div>
+                        <span class="order-label">Order Date</span>
+                        <strong>09 Aug 2026</strong>
+                    </div>
+
+                    <span class="status shipped">
+                        Shipped
+                    </span>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <img src="images/product2.jpg"
+                         alt="Smart Watch"
+                         onerror="this.src='https://via.placeholder.com/100'">
+
+                    <div class="product-details">
+                        <h3>Smart Watch</h3>
+                        <p>Black • Series 5</p>
+                        <p>Quantity: 1</p>
+                    </div>
+
+                    <div class="price">
+                        ₹2,499
+                    </div>
+
+                </div>
+
+
+                <div class="order-footer">
+
+                    <div>
+                        <span>Total Amount</span>
+                        <strong>₹2,499</strong>
+                    </div>
+
+                    <div class="actions">
+                        <button onclick="viewOrder('ORD-1002')">
+                            View Details
+                        </button>
+
+                        <button class="secondary"
+                                onclick="trackOrder('ORD-1002')">
+                            Track Order
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Order 3 -->
+            <div class="order-card" data-status="processing">
+
+                <div class="order-header">
+
+                    <div>
+                        <span class="order-label">Order ID</span>
+                        <strong>#ORD-1003</strong>
+                    </div>
+
+                    <div>
+                        <span class="order-label">Order Date</span>
+                        <strong>11 Aug 2026</strong>
+                    </div>
+
+                    <span class="status processing">
+                        Processing
+                    </span>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <img src="images/product3.jpg"
+                         alt="Running Shoes"
+                         onerror="this.src='https://via.placeholder.com/100'">
+
+                    <div class="product-details">
+                        <h3>Running Shoes</h3>
+                        <p>Sports • Size 9</p>
+                        <p>Quantity: 1</p>
+                    </div>
+
+                    <div class="price">
+                        ₹1,799
+                    </div>
+
+                </div>
+
+
+                <div class="order-footer">
+
+                    <div>
+                        <span>Total Amount</span>
+                        <strong>₹1,799</strong>
+                    </div>
+
+                    <div class="actions">
+                        <button onclick="viewOrder('ORD-1003')">
+                            View Details
+                        </button>
+
+                        <button class="cancel-btn"
+                                onclick="cancelOrder('ORD-1003')">
+                            Cancel Order
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Order 4 -->
+            <div class="order-card" data-status="cancelled">
+
+                <div class="order-header">
+
+                    <div>
+                        <span class="order-label">Order ID</span>
+                        <strong>#ORD-1004</strong>
+                    </div>
+
+                    <div>
+                        <span class="order-label">Order Date</span>
+                        <strong>05 Aug 2026</strong>
+                    </div>
+
+                    <span class="status cancelled">
+                        Cancelled
+                    </span>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <img src="images/product4.jpg"
+                         alt="Backpack"
+                         onerror="this.src='https://via.placeholder.com/100'">
+
+                    <div class="product-details">
+                        <h3>Travel Backpack</h3>
+                        <p>Water Resistant • 30L</p>
+                        <p>Quantity: 1</p>
+                    </div>
+
+                    <div class="price">
+                        ₹999
+                    </div>
+
+                </div>
+
+
+                <div class="order-footer">
+
+                    <div>
+                        <span>Total Amount</span>
+                        <strong>₹999</strong>
+                    </div>
+
+                    <div class="actions">
+                        <button onclick="viewOrder('ORD-1004')">
+                            View Details
+                        </button>
+
+                        <button class="secondary"
+                                onclick="buyAgain('Travel Backpack')">
+                            Buy Again
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Empty Orders -->
+        <div id="emptyOrders" class="empty-orders">
+
+            <div class="empty-icon">📦</div>
+
+            <h2>No Orders Found</h2>
+
+            <p>You don't have any orders in this category.</p>
+
+            <a href="products.html">
+                Start Shopping
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MyShop. All Rights Reserved.</p>
+    </footer>
+
+
+    <script src="js/my-order.js"></script>
+
+</body>
+</html>
+<div class="nav-menu">
+
+    <a href="index.html">Home</a>
+
+    <a href="products.html">Products</a>
+
+    <a href="cart.html">Cart</a>
+
+    <a href="my-order.html">My Orders</a>
+
+    <a href="contact.html">Contact</a>
+
+</div>

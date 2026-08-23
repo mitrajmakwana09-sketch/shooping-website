@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Payment | MyShop</title>
+
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        body {
+
+            font-family: "Poppins", sans-serif;
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc,
+                    #ecfeff
+                );
+
+            color: #111827;
+
+            padding: 20px;
+        }
+
+
+        /* =========================================
+           NAVBAR
+        ========================================= */
+
+        .navbar {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            min-height: 65px;
+
+            padding: 0 20px;
+
+            background: #ffffff;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.06);
+        }
+
+
+        .logo {
+
+            color: #4f46e5;
+
+            font-size: 24px;
+
+            font-weight: 800;
+
+            text-decoration: none;
+        }
+
+
+        .back {
+
+            color: #4f46e5;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .back:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .payment-container {
+
+            max-width: 950px;
+
+            margin: 45px auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 25px;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .payment-card {
+
+            background: #ffffff;
+
+            border-radius: 22px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 15px 45px rgba(0,0,0,0.08);
+        }
+
+
+        .payment-card h1 {
+
+            font-size: 25px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .subtitle {
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================================
+           SUMMARY
+        ========================================= */
+
+        .summary-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 13px 0;
+
+            border-bottom:
+                1px solid #f1f5f9;
+
+            font-size: 14px;
+        }
+
+
+        .summary-row span:first-child {
+
+            color: #64748b;
+        }
+
+
+        .summary-row span:last-child {
+
+            font-weight: 600;
+        }
+
+
+        .total {
+
+            margin-top: 10px;
+
+            padding-top: 18px;
+
+            border-top:
+                2px solid #e5e7eb;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 20px;
+
+            font-weight: 700;
+        }
+
+
+        .total-price {
+
+            color: #4f46e5;
+        }
+
+
+        /* =========================================
+           PAYMENT METHOD BOX
+        ========================================= */
+
+        .payment-method {
+
+            border:
+                2px solid #4f46e5;
+
+            background: #eef2ff;
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            margin: 20px 0;
+        }
+
+
+        .payment-method-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .payment-logo {
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 10px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: 800;
+        }
+
+
+        .payment-method-title strong {
+
+            display: block;
+
+            font-size: 15px;
+        }
+
+
+        .payment-method-title small {
+
+            display: block;
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+
+        .payment-method p {
+
+            color: #64748b;
+
+            font-size: 11px;
+
+            margin-top: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .form-group {
+
+            margin-bottom: 18px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            color: #374151;
+        }
+
+
+        .form-group input,
+        .form-group select {
+
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 14px;
+
+            border:
+                1px solid #d1d5db;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            background: white;
+
+            transition: 0.2s;
+        }
+
+
+        .form-group input:focus,
+        .form-group select:focus {
+
+            border-color: #4f46e5;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(79,70,229,0.10);
+        }
+
+
+        .field-note {
+
+            display: block;
+
+            margin-top: 6px;
+
+            color: #6b7280;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================
+           ERROR
+        ========================================= */
+
+        .input-error {
+
+            border-color: #ef4444 !important;
+
+            background: #fff5f5 !important;
+        }
+
+
+        /* =========================================
+           PAY BUTTON
+        ========================================= */
+
+        .pay-btn {
+
+            width: 100%;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            padding: 15px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .pay-btn:hover {
+
+            background: #4338ca;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(79,70,229,0.25);
+        }
+
+
+        .pay-btn:disabled {
+
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+
+        /* =========================================
+           SECURITY MESSAGE
+        ========================================= */
+
+        .secure {
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 10px;
+
+            margin-top: 15px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================
+           SUCCESS MESSAGE
+        ========================================= */
+
+        .success-message {
+
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            background: #ecfdf5;
+
+            color: #047857;
+
+            text-align: center;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 700px) {
+
+            body {
+
+                padding: 12px;
+            }
+
+
+            .navbar {
+
+                min-height: 58px;
+
+                padding: 0 15px;
+            }
+
+
+            .logo {
+
+                font-size: 21px;
+            }
+
+
+            .back {
+
+                font-size: 12px;
+            }
+
+
+            .payment-container {
+
+                grid-template-columns: 1fr;
+
+                margin: 25px auto;
+            }
+
+
+            .payment-card {
+
+                padding: 22px;
+
+                border-radius: 18px;
+            }
+
+
+            .payment-card h1 {
+
+                font-size: 22px;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .payment-card {
+
+                padding: 18px;
+            }
+
+
+            .summary-row {
+
+                font-size: 13px;
+            }
+
+
+            .total {
+
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================= -->
+
+    <nav class="navbar">
+
+        <a href="index.html"
+           class="logo">
+
+            MyShop
+
+        </a>
+
+
+        <a href="checkout.html"
+           class="back">
+
+            ← Back to Checkout
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================= -->
+
+    <main class="payment-container">
+
+
+        <!-- =====================================
+             ORDER SUMMARY
+        ===================================== -->
+
+        <section class="payment-card">
+
+            <h1>
+                Order Summary
+            </h1>
+
+
+            <p class="subtitle">
+
+                Review your order before payment.
+
+            </p>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Product Total
+                </span>
+
+                <span id="productTotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span>
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="summary-row">
+
+                <span>
+                    Discount
+                </span>
+
+                <span id="discount">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="total">
+
+                <span>
+                    Total
+                </span>
+
+                <span
+                    id="totalPrice"
+                    class="total-price">
+
+                    ₹0
+
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             PAYMENT CARD
+        ===================================== -->
+
+        <section class="payment-card">
+
+            <h1>
+                Online Payment
+            </h1>
+
+
+            <p class="subtitle">
+
+                Complete your demo payment.
+
+            </p>
+
+
+            <!-- Payment information -->
+
+            <div class="payment-method">
+
+                <div class="payment-method-title">
+
+                    <div class="payment-logo">
+                        PAY
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Secure Online Payment
+                        </strong>
+
+                        <small>
+                            UPI • Card • Net Banking
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <p>
+
+                    Demo payment page for MyShop.
+                    Never enter a real banking PIN,
+                    password or OTP.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================
+                 BANK NAME
+            ================================= -->
+
+            <div class="form-group">
+
+                <label for="bankName">
+
+                    Bank Name
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="bankName"
+                    placeholder="Enter demo bank name"
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+
+            <!-- =================================
+                 DEMO SECURITY CODE
+            ================================= -->
+
+            <div class="form-group">
+
+                <label for="securityCode">
+
+                    Demo Security Code
+
+                </label>
+
+
+                <input
+                    type="password"
+                    id="securityCode"
+                    placeholder="Enter 4 or 6 digit demo code"
+                    maxlength="6"
+                    inputmode="numeric"
+                    autocomplete="off"
+                >
+
+
+                <small class="field-note">
+
+                    Demo only — use a dummy 4 or 6 digit code.
+                    Do not enter a real banking PIN/password.
+
+                </small>
+
+            </div>
+
+
+
+            <!-- =================================
+                 PAYMENT METHOD
+            ================================= -->
+
+            <div class="form-group">
+
+                <label for="paymentMethod">
+
+                    Payment Method
+
+                </label>
+
+
+                <select id="paymentMethod">
+
+                    <option value="upi">
+                        UPI
+                    </option>
+
+                    <option value="card">
+                        Card
+                    </option>
+
+                    <option value="netbanking">
+                        Net Banking
+                    </option>
+
+                    <option value="demo">
+                        Demo Payment
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- =================================
+                 PAY BUTTON
+            ================================= -->
+
+            <button
+                type="button"
+                class="pay-btn"
+                id="payButton"
+                onclick="makePayment()">
+
+                💳 Pay Now
+
+            </button>
+
+
+            <!-- Success message -->
+
+            <div
+                id="successMessage"
+                class="success-message">
+
+                Payment Successful! Redirecting...
+
+            </div>
+
+
+            <div class="secure">
+
+                🔒 Demo payment only
+                <br>
+
+                No real banking credentials are collected.
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+         Everything is inside this HTML file
+    ========================================= -->
+
+    <script>
+
+
+        /* =========================================
+           GET CHECKOUT DATA
+        ========================================= */
+
+        const checkoutData =
+            JSON.parse(
+                localStorage.getItem(
+                    "checkoutData"
+                ) || "null"
+            );
+
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem(
+                    "cart"
+                ) || "[]"
+            );
+
+
+
+        /* =========================================
+           CALCULATE PRODUCT TOTAL
+        ========================================= */
+
+        let productTotal = 0;
+
+
+        if (
+            checkoutData &&
+            typeof checkoutData.subtotal === "number"
+        ) {
+
+            productTotal =
+                checkoutData.subtotal;
+
+        }
+
+        else {
+
+            productTotal =
+                cart.reduce(
+                    function(total, item) {
+
+                        return total +
+                            Number(
+                                item.price || 0
+                            ) *
+                            Number(
+                                item.quantity || 1
+                            );
+
+                    },
+                    0
+                );
+
+        }
+
+
+
+        /* =========================================
+           DISCOUNT
+        ========================================= */
+
+        let discount = 0;
+
+
+        if (
+            checkoutData &&
+            typeof checkoutData.discount === "number"
+        ) {
+
+            discount =
+                checkoutData.discount;
+
+        }
+
+
+
+        /* =========================================
+           TOTAL
+        ========================================= */
+
+        let total = 0;
+
+
+        if (
+            checkoutData &&
+            typeof checkoutData.total === "number"
+        ) {
+
+            total =
+                checkoutData.total;
+
+        }
+
+        else {
+
+            total =
+                productTotal -
+                discount;
+
+        }
+
+
+
+        /* =========================================
+           DISPLAY TOTAL
+        ========================================= */
+
+        document.getElementById(
+            "productTotal"
+        ).textContent =
+            "₹" +
+            productTotal.toLocaleString(
+                "en-IN"
+            );
+
+
+        document.getElementById(
+            "discount"
+        ).textContent =
+            "- ₹" +
+            discount.toLocaleString(
+                "en-IN"
+            );
+
+
+        document.getElementById(
+            "totalPrice"
+        ).textContent =
+            "₹" +
+            total.toLocaleString(
+                "en-IN"
+            );
+
+
+
+        /* Save total */
+
+        localStorage.setItem(
+            "cartTotal",
+            total
+        );
+
+
+
+        /* =========================================
+           SECURITY CODE
+           ONLY NUMBERS
+        ========================================= */
+
+        const securityInput =
+            document.getElementById(
+                "securityCode"
+            );
+
+
+        securityInput.addEventListener(
+            "input",
+            function() {
+
+                this.value =
+                    this.value.replace(
+                        /\D/g,
+                        ""
+                    );
+
+            }
+        );
+
+
+
+        /* =========================================
+           PAYMENT FUNCTION
+        ========================================= */
+
+        function makePayment() {
+
+
+            const bankName =
+                document
+                    .getElementById(
+                        "bankName"
+                    )
+                    .value
+                    .trim();
+
+
+            const securityCode =
+                document
+                    .getElementById(
+                        "securityCode"
+                    )
+                    .value
+                    .trim();
+
+
+            const paymentMethod =
+                document
+                    .getElementById(
+                        "paymentMethod"
+                    )
+                    .value;
+
+
+            const bankInput =
+                document.getElementById(
+                    "bankName"
+                );
+
+
+            const payButton =
+                document.getElementById(
+                    "payButton"
+                );
+
+
+            const successMessage =
+                document.getElementById(
+                    "successMessage"
+                );
+
+
+
+            /* =====================================
+               EMPTY CART
+            ===================================== */
+
+            if (total <= 0) {
+
+                alert(
+                    "Your cart is empty. Please add a product first."
+                );
+
+                return;
+            }
+
+
+
+            /* =====================================
+               BANK NAME VALIDATION
+            ===================================== */
+
+            if (bankName === "") {
+
+                bankInput.classList.add(
+                    "input-error"
+                );
+
+                alert(
+                    "Please enter demo bank name."
+                );
+
+                bankInput.focus();
+
+                return;
+            }
+
+
+            bankInput.classList.remove(
+                "input-error"
+            );
+
+
+
+            /* =====================================
+               4 OR 6 DIGIT DEMO CODE
+            ===================================== */
+
+            if (
+                !/^\d{4}$|^\d{6}$/.test(
+                    securityCode
+                )
+            ) {
+
+                securityInput.classList.add(
+                    "input-error"
+                );
+
+                alert(
+                    "Please enter a 4 or 6 digit demo security code."
+                );
+
+                securityInput.focus();
+
+                return;
+            }
+
+
+            securityInput.classList.remove(
+                "input-error"
+            );
+
+
+
+            /* =====================================
+               PROCESSING
+            ===================================== */
+
+            payButton.disabled = true;
+
+            payButton.textContent =
+                "Processing Payment...";
+
+
+
+            /* =====================================
+               DEMO PAYMENT
+            ===================================== */
+
+            setTimeout(
+                function() {
+
+
+                    /*
+                     * We deliberately DO NOT
+                     * save the security code.
+                     */
+
+
+                    localStorage.setItem(
+                        "paymentStatus",
+                        "success"
+                    );
+
+
+                    localStorage.setItem(
+                        "paymentMethod",
+                        paymentMethod
+                    );
+
+
+                    localStorage.setItem(
+                        "paymentBank",
+                        bankName
+                    );
+
+
+                    localStorage.setItem(
+                        "paymentAmount",
+                        total
+                    );
+
+
+                    /* Generate demo payment ID */
+
+                    const paymentId =
+                        "PAY" +
+                        Date.now();
+
+
+                    localStorage.setItem(
+                        "demoPaymentId",
+                        paymentId
+                    );
+
+
+
+                    /* Show success */
+
+                    successMessage.style.display =
+                        "block";
+
+
+                    payButton.textContent =
+                        "✓ Payment Successful";
+
+
+                    payButton.style.background =
+                        "#16a34a";
+
+
+
+                    /* Redirect */
+
+                    setTimeout(
+                        function() {
+
+                            window.location.href =
+                                "success.html";
+
+                        },
+                        1000
+                    );
+
+
+                },
+                1500
+            );
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

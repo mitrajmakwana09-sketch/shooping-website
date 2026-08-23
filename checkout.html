@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | MyShop</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            font-family: "Poppins", sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef2ff,
+                    #f8fafc
+                );
+
+            min-height: 100vh;
+
+            color: #111827;
+
+            padding: 20px;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* ================================
+           NAVBAR
+        ================================= */
+
+        .navbar {
+            max-width: 1100px;
+
+            margin: auto;
+
+            min-height: 65px;
+
+            padding: 0 20px;
+
+            background: white;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.06);
+        }
+
+
+        .logo {
+            color: #4f46e5;
+
+            font-size: 24px;
+
+            font-weight: 800;
+        }
+
+
+        .back {
+            color: #4f46e5;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        /* ================================
+           MAIN
+        ================================= */
+
+        .checkout-container {
+            max-width: 1100px;
+
+            margin: 35px auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.5fr 1fr;
+
+            gap: 25px;
+        }
+
+
+        .card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(0, 0, 0, 0.07);
+        }
+
+
+        .card h1 {
+            font-size: 25px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .subtitle {
+            color: #64748b;
+
+            font-size: 12px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* ================================
+           FORM
+        ================================= */
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+
+        .form-row {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 15px;
+        }
+
+
+        label {
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+
+        input,
+        textarea,
+        select {
+
+            width: 100%;
+
+            border: 1px solid #dbe1ea;
+
+            border-radius: 10px;
+
+            padding: 12px 13px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 13px;
+
+            color: #111827;
+
+            background: white;
+
+            transition: 0.3s;
+
+        }
+
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+
+            border-color: #4f46e5;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(79, 70, 229, 0.08);
+
+        }
+
+
+        textarea {
+            resize: vertical;
+
+            min-height: 100px;
+        }
+
+
+        .required {
+            color: #ef4444;
+        }
+
+
+        /* ================================
+           ORDER ITEMS
+        ================================= */
+
+        .summary-title {
+            font-size: 18px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .cart-items {
+            max-height: 300px;
+
+            overflow-y: auto;
+
+            margin-bottom: 15px;
+        }
+
+
+        .cart-item {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #eef2f7;
+        }
+
+
+        .item-image {
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            background: #f1f5f9;
+
+            flex-shrink: 0;
+        }
+
+
+        .item-image img {
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .item-info {
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        .item-name {
+            font-size: 13px;
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+
+        .item-quantity {
+            color: #64748b;
+
+            font-size: 11px;
+
+            margin-top: 3px;
+        }
+
+
+        .item-price {
+            font-size: 13px;
+
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        /* ================================
+           TOTAL
+        ================================= */
+
+        .price-row {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 10px 0;
+
+            font-size: 13px;
+        }
+
+
+        .price-row span:first-child {
+            color: #64748b;
+        }
+
+
+        .grand-total {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            border-top: 2px solid #e5e7eb;
+
+            margin-top: 10px;
+
+            padding-top: 17px;
+
+            font-size: 19px;
+
+            font-weight: 700;
+        }
+
+
+        .grand-total span:last-child {
+            color: #4f46e5;
+        }
+
+
+        /* ================================
+           PAYMENT BUTTON
+        ================================= */
+
+        .payment-btn {
+
+            width: 100%;
+
+            border: none;
+
+            background: #4f46e5;
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 11px;
+
+            margin-top: 20px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+
+        }
+
+
+        .payment-btn:hover {
+
+            background: #4338ca;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(79, 70, 229, 0.25);
+
+        }
+
+
+        .secure {
+
+            text-align: center;
+
+            color: #64748b;
+
+            font-size: 10px;
+
+            margin-top: 12px;
+
+        }
+
+
+        /* ================================
+           EMPTY CART
+        ================================= */
+
+        .empty-cart {
+
+            text-align: center;
+
+            padding: 40px 10px;
+
+            color: #64748b;
+
+        }
+
+
+        .empty-cart-icon {
+
+            font-size: 40px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .empty-cart h2 {
+
+            color: #111827;
+
+            font-size: 19px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .shop-btn {
+
+            display: inline-block;
+
+            margin-top: 15px;
+
+            padding: 10px 18px;
+
+            border-radius: 9px;
+
+            background: #4f46e5;
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 750px) {
+
+            body {
+                padding: 12px;
+            }
+
+
+            .checkout-container {
+
+                grid-template-columns: 1fr;
+
+                margin-top: 25px;
+
+            }
+
+
+            .card {
+
+                padding: 21px;
+
+                border-radius: 17px;
+
+            }
+
+        }
+
+
+        @media (max-width: 450px) {
+
+            .navbar {
+
+                min-height: 58px;
+
+                padding: 0 15px;
+
+            }
+
+
+            .logo {
+
+                font-size: 21px;
+
+            }
+
+
+            .form-row {
+
+                grid-template-columns: 1fr;
+
+                gap: 0;
+
+            }
+
+
+            .card h1 {
+
+                font-size: 22px;
+
+            }
+
+
+            .grand-total {
+
+                font-size: 17px;
+
+            }
+
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/checkout.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         NAVBAR
+    ================================= -->
+
+    <nav class="navbar">
+
+        <a href="index.html"
+           class="logo">
+
+            MyShop
+
+        </a>
+
+
+        <a href="cart.html"
+           class="back">
+
+            ← Back to Cart
+
+        </a>
+
+    </nav>
+
+
+
+    <!-- ================================
+         CHECKOUT
+    ================================= -->
+
+    <main class="checkout-container">
+
+
+        <!-- ============================
+             CUSTOMER INFORMATION
+        ============================= -->
+
+        <section class="card">
+
+            <h1>
+                Checkout
+            </h1>
+
+            <p class="subtitle">
+                Enter your delivery information.
+            </p>
+
+
+            <form id="checkoutForm" novalidate onsubmit="return proceedToPayment(event);">
+
+
+                <!-- NAME + PHONE -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+
+                            Full Name
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            placeholder="Enter your name"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+
+                            Mobile Number
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            placeholder="10 digit mobile number"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+
+                        Email Address
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="example@gmail.com"
+                        required>
+
+                </div>
+
+
+
+                <!-- ADDRESS -->
+
+                <div class="form-group">
+
+                    <label for="address">
+
+                        Full Address
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <textarea
+                        id="address"
+                        placeholder="House No, Street, Area..."
+                        required></textarea>
+
+                </div>
+
+
+
+                <!-- CITY + PIN -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="city">
+
+                            City
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="Enter city"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="pincode">
+
+                            PIN Code
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="pincode"
+                            placeholder="6 digit PIN"
+                            maxlength="6"
+                            pattern="[0-9]{6}"
+                            required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- STATE -->
+
+                <div class="form-group">
+
+                    <label for="state">
+
+                        State
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <select id="state" required>
+
+                        <option value="">
+                            Select State
+                        </option>
+
+                        <option>
+                            Gujarat
+                        </option>
+
+                        <option>
+                            Maharashtra
+                        </option>
+
+                        <option>
+                            Rajasthan
+                        </option>
+
+                        <option>
+                            Madhya Pradesh
+                        </option>
+
+                        <option>
+                            Delhi
+                        </option>
+
+                        <option>
+                            Uttar Pradesh
+                        </option>
+
+                        <option>
+                            Karnataka
+                        </option>
+
+                        <option>
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PAYMENT METHOD -->
+
+                <div class="form-group">
+
+                    <label>
+                        Payment Method
+                        <span class="required">*</span>
+                    </label>
+
+                    <div class="payment-options">
+
+                        <label class="payment-option">
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="online"
+                                checked>
+                            Online Payment
+                        </label>
+
+                        <label class="payment-option">
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="cod">
+                            Cash on Delivery
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <!-- COUPON CODE -->
+
+                <div class="form-group">
+
+                    <label for="couponCode">
+                        Coupon Code
+                    </label>
+
+                    <div class="coupon-row">
+                        <input
+                            type="text"
+                            id="couponCode"
+                            placeholder="Try MEETRAJ60 (₹60 off)"
+                            autocomplete="off">
+                        <button
+                            type="button"
+                            id="applyCouponBtn"
+                            class="payment-btn">
+                            Apply
+                        </button>
+                    </div>
+
+                    <p id="couponMessage" class="coupon-message"></p>
+
+                </div>
+
+                <!-- PAYMENT BUTTON -->
+
+                <button
+                    type="submit"
+                    id="proceedPaymentBtn"
+                    class="payment-btn">
+
+                    Proceed to Payment →
+
+                </button>
+
+
+                <div class="secure">
+
+                    🔒 Your information is kept secure.
+
+                </div>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- ============================
+             ORDER SUMMARY
+        ============================= -->
+
+        <section class="card">
+
+
+            <h2 class="summary-title">
+
+                Your Order
+
+            </h2>
+
+
+            <div id="checkoutProducts"
+                 class="checkout-products">
+            </div>
+
+
+            <div id="checkoutItems"
+                 class="cart-items">
+
+            </div>
+
+
+            <div class="price-row">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <span id="checkoutSubtotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="price-row">
+
+                <span>
+                    Delivery
+                </span>
+
+                <span id="checkoutDelivery">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="price-row">
+
+                <span>
+                    Discount
+                </span>
+
+                <span id="checkoutDiscount">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="grand-total">
+
+                <span>
+                    Total
+                </span>
+
+                <span id="checkoutTotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+        <script src="js/script.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>
+

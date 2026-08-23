@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Product | MyShop</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; background: #f7f8fc; color: #111827; }
+        main { max-width: 580px; margin: 48px auto; padding: 28px; background: #fff; border-radius: 14px; box-shadow: 0 10px 35px #11182718; }
+        h1 { margin-top: 0; } label { display: block; font-weight: 600; margin-top: 16px; }
+        input { width: 100%; box-sizing: border-box; margin-top: 6px; padding: 11px; border: 1px solid #d1d5db; border-radius: 8px; }
+        button { margin-top: 22px; border: 0; border-radius: 8px; padding: 12px 18px; color: #fff; background: #2563eb; font-weight: 700; cursor: pointer; }
+        #message { min-height: 24px; margin-top: 15px; } .success { color: #15803d; } .error { color: #b91c1c; } a { color: #2563eb; }
+    </style>
+</head>
+<body>
+    <main>
+        <a href="products.html">← View products</a>
+        <h1>Add a product</h1>
+        <p>The image will be saved in <code>D:\meetraj</code>.</p>
+        <form id="productForm">
+            <label>Product name<input name="name" required maxlength="100"></label>
+            <label>Category<input name="category" placeholder="Electronics" maxlength="50"></label>
+            <label>Price (₹)<input name="price" type="number" min="0" step="0.01" required></label>
+            <label>Product image<input name="image" type="file" accept="image/jpeg,image/png,image/webp,image/gif" required></label>
+            <button type="submit">Save product</button>
+        </form>
+        <p id="message" aria-live="polite"></p>
+    </main>
+    <script src="js/product-upload.js"></script>
+</body>
+</html>
